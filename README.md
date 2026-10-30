@@ -230,7 +230,8 @@ tests/             synthetic unit tests + web app tests
 
 ## Repository
 
-Source: <https://github.com/rayfoolshs/skate-metrics>
+Source: <https://github.com/rayfoolshs/skate-metrics>  
+Showcase: <https://rayfoolshs.github.io/skate-metrics/>
 
 ## License, credits and privacy
 

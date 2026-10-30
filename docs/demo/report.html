@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Ray Foo Productions">
+<title>Skate Metrics — synthetic.mp4</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0e0e0e; color: #eee;
+         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { max-width: 960px; margin: 0 auto; padding: 32px 20px 64px; }
+  header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+            border-bottom: 1px solid #2a2a2a; padding-bottom: 16px; margin-bottom: 24px; }
+  h1 { font-size: 22px; margin: 0; letter-spacing: .02em; }
+  h2 { font-size: 18px; margin: 0; }
+  .subhead { margin: 22px 0 10px; font-size: 15px; color: #bbb; text-transform: uppercase;
+             letter-spacing: .08em; }
+  .muted { color: #888; }
+  .meta { color: #888; font-size: 13px; }
+  video { width: 100%; border-radius: 12px; background: #000; display: block; }
+  .jump { margin-top: 28px; border-top: 1px solid #242424; padding-top: 20px; }
+  .jump-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .tag { font-size: 12px; color: #f0a020; border: 1px solid #5a4218;
+          border-radius: 999px; padding: 2px 9px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+            margin-bottom: 16px; }
+  .stats div { background: #181818; border: 1px solid #262626; border-radius: 10px;
+                padding: 12px 14px; display: flex; flex-direction: column; }
+  .value { font-size: 24px; font-variant-numeric: tabular-nums; }
+  .value small { font-size: 12px; color: #999; margin-left: 4px; }
+  .label { font-size: 11px; color: #888; text-transform: uppercase;
+            letter-spacing: .08em; margin-top: 4px; }
+  .warning { border: 1px solid #6b4a16; background: #221a0d; color: #f0c674;
+              border-radius: 10px; padding: 12px 16px; margin-bottom: 18px; }
+  .warning ul { margin: 6px 0 0; padding-left: 18px; }
+  footer { margin-top: 32px; color: #777; font-size: 12px; }
+  .credit { margin-top: 10px; padding-top: 10px; border-top: 1px solid #242424; }
+  .credit a { color: #999; text-decoration: none; }
+  .credit a:hover { color: #f0a020; }
+  @media (max-width: 620px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Skate Metrics</h1>
+    <span class="meta">synthetic.mp4 · 60 fps · 1 jump(s) detected</span>
+  </header>
+  
+  <video src="overlay.mp4" controls playsinline muted loop></video>
+  <h2 class='subhead'>Skeleton view</h2><video src='skeleton.mp4' controls playsinline muted loop></video>
+  
+<section class="jump">
+  <div class="jump-head">
+    <h2>Jump 1</h2>
+    <span class="tag">CW</span>
+    <span class="tag">1.49 rev</span>
+    <span class="tag">1.5 rev skating count</span>
+  </div>
+  <div class="stats">
+    <div><span class="value">0.44<small>m</small></span><span class="label">height</span></div>
+    <div><span class="value">2.50<small>rev/s</small></span><span class="label">avg rotation</span></div>
+    <div><span class="value">2.66<small>rev/s</small></span><span class="label">peak rotation</span></div>
+    <div><span class="value">0.60<small>s</small></span><span class="label">flight time</span></div>
+  </div>
+  
+<svg viewBox="0 0 760 220" role="img" aria-label="Rotation rate for jump 1">
+  <rect width="760" height="220" fill="#161616" rx="10"/>
+  <line x1='52.0' y1='18' x2='52.0' y2='186' stroke='#2a2a2a'/><text x='52.0' y='210' fill='#888' font-size='11' text-anchor='middle'>1.42s</text><line x1='224.5' y1='18' x2='224.5' y2='186' stroke='#2a2a2a'/><text x='224.5' y='210' fill='#888' font-size='11' text-anchor='middle'>1.56s</text><line x1='397.0' y1='18' x2='397.0' y2='186' stroke='#2a2a2a'/><text x='397.0' y='210' fill='#888' font-size='11' text-anchor='middle'>1.70s</text><line x1='569.5' y1='18' x2='569.5' y2='186' stroke='#2a2a2a'/><text x='569.5' y='210' fill='#888' font-size='11' text-anchor='middle'>1.84s</text><line x1='742.0' y1='18' x2='742.0' y2='186' stroke='#2a2a2a'/><text x='742.0' y='210' fill='#888' font-size='11' text-anchor='middle'>1.98s</text>
+  <line x1="52" y1="186.0" x2="742" y2="186.0" stroke="#555"/>
+  <polyline points="52.0,83.7 72.3,53.3 92.6,36.0 112.9,38.3 133.2,45.1 153.5,45.1 173.8,45.1 194.1,45.1 214.4,45.1 234.6,45.1 254.9,45.1 275.2,45.1 295.5,45.1 315.8,45.1 336.1,45.1 356.4,45.1 376.7,45.1 397.0,45.1 417.3,45.1 437.6,45.1 457.9,45.1 478.2,45.1 498.5,45.1 518.8,45.1 539.1,45.1 559.4,45.1 579.6,45.1 599.9,45.1 620.2,45.1 640.5,45.1 660.8,45.1 681.1,38.7 701.4,36.6 721.7,52.8 742.0,81.1" fill="none" stroke="#f0a020" stroke-width="2.5"
+            stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="60" y="32" fill="#ccc" font-size="12">2.66 rev/s peak</text>
+</svg>
+
+</section>
+
+  <footer>
+    Height is derived from flight time (h = g·t²/8). Rotation is measured from
+    the shoulder line and shown in revolutions: 0.5 is half a revolution,
+    1.5 is a single Axel, 3.5 a triple Axel and 4.5 a quad Axel. Coaching-grade
+    estimates from a single 60 fps camera, not judging-grade measurements.
+    <div class="credit">
+      Developed by
+      <a href="https://www.rayfooproductions.com" target="_blank" rel="noopener">Ray Foo Productions</a>
+      · <a href="https://www.instagram.com/edgeswithray/" target="_blank" rel="noopener">@edgeswithray</a>
+    </div>
+  </footer>
+</main>
+</body>
+</html>

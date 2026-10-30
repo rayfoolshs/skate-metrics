@@ -5,15 +5,15 @@ description = "Markerless figure-skating jump analysis from video"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "Ray Foo Productions" }]
-
-[project.urls]
-Homepage = "https://www.rayfooproductions.com"
-Instagram = "https://www.instagram.com/edgeswithray/"
 dependencies = [
     "numpy>=1.26",
     "scipy>=1.11",
     "opencv-python>=4.9",
 ]
+
+[project.urls]
+Homepage = "https://www.rayfooproductions.com"
+Instagram = "https://www.instagram.com/edgeswithray/"
 
 [project.optional-dependencies]
 pose = ["mediapipe>=0.10.14"]

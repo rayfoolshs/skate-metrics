@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Ray Foo Productions">
+<meta name="description" content="Skate Metrics — markerless figure-skating jump analysis from a single phone video. Jump height, rotation count and rotation speed.">
+<title>Skate Metrics · Ray Foo Productions</title>
+<style>
+  :root { color-scheme: dark; --amber:#f0a020; --teal:#00c2b2; --panel:#181818;
+          --line:#2a2a2a; --muted:#8a8a8a; --bg:#0e0e0e; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:#eee;
+         font:16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { max-width:1080px; margin:0 auto; padding:32px 22px 70px; }
+  header { display:flex; align-items:center; gap:14px; padding-bottom:24px; }
+  .mark { width:38px; height:38px; border-radius:50%; border:2px solid var(--amber);
+          position:relative; flex:0 0 auto; }
+  .mark:after { content:""; position:absolute; inset:8px; border-radius:50%;
+                border:2px solid var(--teal); }
+  .brand h1 { margin:0; font-size:17px; letter-spacing:.03em; }
+  .brand span { display:block; font-size:10px; color:var(--muted);
+                text-transform:uppercase; letter-spacing:.16em; margin-top:2px; }
+  .hero { padding:40px 0 30px; border-bottom:1px solid var(--line); }
+  .hero h2 { font-size:clamp(30px, 5vw, 48px); line-height:1.08; margin:0 0 16px;
+             letter-spacing:-.02em; max-width:780px; }
+  .hero p { color:#bbb; font-size:17px; max-width:680px; margin:0 0 24px; }
+  .accent { color:var(--amber); }
+  .cta { display:flex; gap:10px; flex-wrap:wrap; }
+  .cta a { text-decoration:none; border-radius:10px; padding:11px 16px; font-weight:650;
+           font-size:14px; }
+  .cta .primary { background:var(--amber); color:#151515; }
+  .cta .secondary { background:#242424; color:#eee; border:1px solid #3a3a3a; }
+  .shot { width:100%; border-radius:16px; border:1px solid var(--line);
+          margin:28px 0 0; display:block; }
+  .note { border:1px solid #5a4218; background:#221a0d; color:#f0c674;
+          border-radius:12px; padding:12px 16px; margin:26px 0; font-size:14px; }
+  .grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px;
+          margin:28px 0; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:14px;
+          padding:18px; min-width:0; }
+  .card h3 { margin:0 0 8px; font-size:14px; text-transform:uppercase;
+             letter-spacing:.08em; color:#ccc; }
+  .card p { margin:0; color:#999; font-size:14px; }
+  .card a { color:var(--amber); }
+  section h3 { font-size:22px; margin:36px 0 10px; }
+  pre { background:#141414; border:1px solid var(--line); border-radius:12px;
+        padding:16px; overflow:auto; color:#ddd; font-size:13px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .docs { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0; }
+  .docs a { color:#ccc; border:1px solid #333; border-radius:999px; padding:5px 11px;
+            text-decoration:none; font-size:13px; }
+  .docs a:hover { border-color:var(--amber); color:var(--amber); }
+  footer { margin-top:46px; padding-top:16px; border-top:1px solid var(--line);
+           color:#777; font-size:12px; }
+  footer a { color:#999; text-decoration:none; }
+  footer a:hover { color:var(--amber); }
+  @media (max-width:760px) { .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="mark"></div>
+    <div class="brand">
+      <h1>Skate Metrics</h1>
+      <span>Ray Foo Productions</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2>Markerless figure-skating jump analysis from <span class="accent">one phone video</span>.</h2>
+    <p>
+      Jump height, rotation count and rotation speed — with a skeleton overlay,
+      a clean skeleton-only view and a coach-readable report. Built for a fixed
+      60&nbsp;fps camera at the boards.
+    </p>
+    <div class="cta">
+      <a class="primary" href="demo/report.html" target="_blank" rel="noopener">Open demo report</a>
+      <a class="secondary" href="demo/skeleton.mp4" target="_blank" rel="noopener">Watch skeleton output</a>
+      <a class="secondary" href="https://github.com/rayfoolshs/skate-metrics">View source</a>
+    </div>
+    <img class="shot" src="web-app.png" alt="Skate Metrics web app showing a detected jump and metrics">
+  </section>
+
+  <div class="note">
+    <strong>GitHub Pages hosts the showcase and a precomputed demo.</strong>
+    The analyzer itself is a local Python/FastAPI app — video stays on your
+    machine. Run it locally for your own clips.
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Height</h3>
+      <p>Derived from flight time: <code>h = g·t²/8</code>. No camera calibration needed.</p>
+    </div>
+    <div class="card">
+      <h3>Rotation</h3>
+      <p>3D shoulder yaw, unwrapped across the jump. Shown in revolutions: 0.5 = half, 1.5 = single Axel, 4.5 = quad Axel.</p>
+    </div>
+    <div class="card">
+      <h3>Skeleton output</h3>
+      <p>An overlay video and a clean skeleton-only render, both H.264 for browser playback.</p>
+    </div>
+    <div class="card">
+      <h3>Local-first</h3>
+      <p>FastAPI + MediaPipe + OpenCV. Upload, browser recording or a YouTube link. Jobs persist under <code>out/web/</code>.</p>
+    </div>
+  </div>
+
+  <section>
+    <h3>Run it locally</h3>
+    <pre><code>git clone https://github.com/rayfoolshs/skate-metrics.git
+cd skate-metrics
+uv sync --extra dev --extra pose --extra web
+uv run skate-metrics serve
+# open http://127.0.0.1:8000</code></pre>
+    <p style="color:#999;font-size:14px">
+      Requires Python 3.11–3.13, <a href="https://docs.astral.sh/uv/" style="color:var(--amber)">uv</a>
+      and ffmpeg. The MediaPipe model downloads on first analysis.
+    </p>
+  </section>
+
+  <section>
+    <h3>Docs</h3>
+    <div class="docs">
+      <a href="https://github.com/rayfoolshs/skate-metrics/blob/main/docs/ARCHITECTURE.md">Architecture</a>
+      <a href="https://github.com/rayfoolshs/skate-metrics/blob/main/docs/HOW_IT_WAS_BUILT.md">How it was built</a>
+      <a href="https://github.com/rayfoolshs/skate-metrics/blob/main/docs/API.md">Web API</a>
+      <a href="https://github.com/rayfoolshs/skate-metrics/blob/main/docs/LIMITATIONS.md">Limitations</a>
+      <a href="https://github.com/rayfoolshs/skate-metrics/blob/main/docs/DEVELOPMENT.md">Development</a>
+      <a href="https://github.com/rayfoolshs/skate-metrics/blob/main/docs/CAPTURE.md">Capture protocol</a>
+    </div>
+    <p style="color:#999;font-size:14px">
+      The demo on this page is synthetic, with a known 0.60&nbsp;s flight and
+      1.5 revolutions, so you can see the output without uploading a clip.
+    </p>
+  </section>
+
+  <footer>
+    <strong>Skate Metrics</strong> · developed by
+    <a href="https://www.rayfooproductions.com">Ray Foo Productions</a>
+    · <a href="https://www.instagram.com/edgeswithray/">@edgeswithray</a>
+    · © 2026. All rights reserved.
+  </footer>
+</main>
+</body>
+</html>
