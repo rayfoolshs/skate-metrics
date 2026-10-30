@@ -2,6 +2,8 @@
 
 **Developed by [Ray Foo Productions](https://www.rayfooproductions.com) · [@edgeswithray](https://www.instagram.com/edgeswithray/)**
 
+[![tests](https://github.com/rayfoolshs/skate-metrics/actions/workflows/tests.yml/badge.svg)](https://github.com/rayfoolshs/skate-metrics/actions/workflows/tests.yml)
+
 Markerless figure-skating jump analysis from a single phone video.
 
 The first milestone is an **offline analysis core**: give it a clip, get the
